@@ -24,7 +24,7 @@
     # gh
     google-chrome
     git
-    # emacs
+    emacs
     pass      # password manager
     feh       # image viewer
     moc       # music on the command line
