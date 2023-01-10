@@ -108,7 +108,7 @@
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
     #jack.enable = true;
-
+  };
   # TODO: Set your hostname
   networking.hostName = "nixos";
 
