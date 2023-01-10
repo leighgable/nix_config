@@ -17,7 +17,7 @@
   home.stateVersion = "22.11";
 
   # Let Home Manager install and manage itself.
-  # programs.home-manager.enable = true;
+    programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
     tmux
@@ -42,7 +42,7 @@
     };
   };
 
-  services.gpg-agent {
+  services.gpg-agent = {
     enable = true;
     enableSshSupport = true;
   };
