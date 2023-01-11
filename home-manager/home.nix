@@ -1,6 +1,31 @@
-{ config, pkgs, ... }:
-
+{ inputs, outputs, lib, config, pkgs, ... }:
+  
 {
+  # add home-manager modules here
+  imports = [];
+
+  nixpkgs = {
+    # add overlays here
+    overlays = [
+      # add overlays from flake exports (from overlays and pkgs dir):
+      # outputs.overlays.modifications
+      # outputs.overlays.additions
+      # can also add overlays exported from other flakes:
+      # ex neovim-nightly-overlay.overlays.default
+      # or define inline:
+      # (final: prev: {
+      #     hi = final.hello.overrideAttrs (oldAttrs: {
+      #        patches = [ ./change-hello-to-hi.patch ];
+      #     });
+      #  })
+    ];
+
+    config = {
+      allowUnfree = true;
+      allowUnfreePredicate = (_: true);
+      };
+    };
+  
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "leigh";
@@ -28,7 +53,9 @@
     pass      # password manager
     feh       # image viewer
     moc       # music on the command line
-    zathura   # ebooks viewer ?
+    zathura   # ebooks viewer
+    tree
+    ripgrep-all
   ];
 
   programs.git = {
@@ -46,16 +73,5 @@
     enable = true;
     enableSshSupport = true;
   };
-  
- # programs.gh = {
- #   enable = true;
- # };
 
-#  programs.emacs = {
-#    enable = true;
-#    extraPackages = epkgs: [
-#      epkgs.nix-mode
-#      epkgs.magit
-#    ];
-#  };
 }
