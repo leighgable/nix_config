@@ -1,5 +1,9 @@
 { inputs, outputs, lib, config, pkgs, ... }:
-  
+
+let
+  inherit (config) colorscheme; # try to pass helix theme.nix
+in
+
 {
   # add home-manager modules here
   imports = [];
@@ -46,7 +50,6 @@
 
   home.packages = with pkgs; [
     tmux
-    # gh
     google-chrome
     git
     emacs
@@ -55,8 +58,21 @@
     moc       # music on the command line
     zathura   # ebooks viewer
     tree
-    ripgrep-all
+    ripgrep
+    helix
   ];
+
+  programs.helix = {
+    enable = true;
+    settings = {
+      theme = "${colorscheme.slug}";
+      editor = {
+        line-number = "absolute";
+        indent-guides.render = true;
+      };
+    };
+    themes = import ./theme.nix { inherit colorscheme; };
+  };
 
   programs.git = {
     enable = true;
