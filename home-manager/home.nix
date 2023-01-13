@@ -22,9 +22,8 @@
     ];
 
       config = {
-      allowUnfree = true;
-      allowUnfreePredicate = (_: true);
-      colorscheme = inputs.nix-colors.colorschemes.paraiso;
+        allowUnfree = true;
+        allowUnfreePredicate = (_: true);
       };
     };
   
@@ -63,13 +62,11 @@
   programs.helix = {
     enable = true;
     settings = {
-      theme = "${colorscheme.slug}";
       editor = {
         line-number = "absolute";
         indent-guides.render = true;
       };
     };
-    themes = import ./theme.nix { inherit (config) colorscheme; };
   };
 
   programs.git = {
