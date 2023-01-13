@@ -1,8 +1,5 @@
 { inputs, outputs, lib, config, pkgs, ... }:
 
-let
-  inherit (config) colorscheme; # try to pass helix theme.nix
-in
 
 {
   # add home-manager modules here
@@ -24,9 +21,10 @@ in
       #  })
     ];
 
-    config = {
+      config = {
       allowUnfree = true;
       allowUnfreePredicate = (_: true);
+      colorscheme = inputs.nix-colors.colorschemes.paraiso;
       };
     };
   
@@ -71,7 +69,7 @@ in
         indent-guides.render = true;
       };
     };
-    themes = import ./theme.nix { inherit colorscheme; };
+    themes = import ./theme.nix { inherit (config) colorscheme; };
   };
 
   programs.git = {
