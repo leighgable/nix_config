@@ -3,7 +3,7 @@
 }: let
   inherit (inputs.nixpkgs) pkgs;
 in {
-  helix = pkgs.helix.override {
+  myhelix = pkgs.helix.override {
     extraWrapperArgs = [
       "--set-default"
       "RUST_SRC_PATH"
@@ -30,3 +30,4 @@ in {
       black
     ];
   };
+}

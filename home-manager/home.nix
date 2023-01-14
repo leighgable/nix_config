@@ -56,10 +56,10 @@
     zathura   # ebooks viewer
     tree
     ripgrep
-    helix
+    myhelix
   ];
 
-  programs.helix = {
+  programs.myhelix = {
     enable = true;
     settings = {
       editor = {
