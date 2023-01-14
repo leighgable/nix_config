@@ -8,7 +8,14 @@
     # Home manager
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
+    
+    helix.url = "github:nrdpx/helix/fork";
+    helix.inputs.nixpkgs.follows = "nixos";
+    helix.inputs.rust-overlay.follows = "rust-overlay";
+    
+    rust-overlay.url = "github:oxalica/rust-overlay";
+    rust-overlay.inputs.nixpkgs.follows = "nixos";
+    
     # emacs overlay
     # emacs-overlay = {
     #   url = "github:nix-community/emacs-overlay";
@@ -19,7 +26,7 @@
 
     # Shameless plug: looking for a way to nixify your themes and make
     # everything match nicely? Try nix-colors!
-    nix-colors.url = "github:misterio77/nix-colors";
+    # nix-colors.url = "github:misterio77/nix-colors";
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
