@@ -1,3 +1,4 @@
+{ pkgs ? import <nixpkgs> { } }: 
 # This file defines overlays
 {
   # This one brings our custom packages from the 'pkgs' directory
