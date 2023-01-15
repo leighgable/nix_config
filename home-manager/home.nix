@@ -67,7 +67,7 @@
         indent-guides.render = true;
       };
     };
-    extraPackages = with pkgs; [
+    languages = with pkgs; [
       nodePackages.bash-language-server
       shellcheck
       yaml-language-server
