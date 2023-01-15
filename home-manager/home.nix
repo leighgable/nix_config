@@ -49,6 +49,7 @@
     tmux
     google-chrome
     git
+    gh
     emacs
     pass      # password manager
     feh       # image viewer
@@ -67,25 +68,25 @@
         indent-guides.render = true;
       };
     };
-    languages = with pkgs; [
-      nodePackages.bash-language-server
-      shellcheck
-      yaml-language-server
-      cmake-language-server
-      taplo-lsp
-      rnix-lsp
-      alejandra
-      python3Packages.python-lsp-server
-      clang-tools
-      rust-analyzer
-      haskellPackages.haskell-language-server
-      # inputs.nickel.packages.default
-      # inputs.nil.packages.default
-      gopls
-      shfmt
-      go
-      black  
-    ];
+    # languages = with pkgs; [
+    #   nodePackages.bash-language-server
+    #   shellcheck
+    #   yaml-language-server
+    #   cmake-language-server
+    #   taplo-lsp
+    #   rnix-lsp
+    #   alejandra
+    #   python3Packages.python-lsp-server
+    #   clang-tools
+    #   rust-analyzer
+    #   haskellPackages.haskell-language-server
+    #   # inputs.nickel.packages.default
+    #   # inputs.nil.packages.default
+    #   gopls
+    #   shfmt
+    #   go
+    #   black  
+    # ];
   };
 
   programs.git = {
@@ -98,7 +99,15 @@
       co = "checkout";
     };
   };
-
+  
+  programs.gh = {
+    enable = true;
+    settings = {
+      git_protocol = "ssh";
+      prompt = "enabled";
+    };
+  }
+  
   services.gpg-agent = {
     enable = true;
     enableSshSupport = true;
