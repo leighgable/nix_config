@@ -106,7 +106,7 @@
       git_protocol = "ssh";
       prompt = "enabled";
     };
-  }
+  };
   
   services.gpg-agent = {
     enable = true;
