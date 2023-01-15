@@ -79,8 +79,8 @@
       clang-tools
       rust-analyzer
       haskellPackages.haskell-language-server
-      inputs.nickel.packages.default
-      inputs.nil.packages.default
+      # inputs.nickel.packages.default
+      # inputs.nil.packages.default
       gopls
       shfmt
       go
