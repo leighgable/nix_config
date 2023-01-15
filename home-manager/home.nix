@@ -19,7 +19,7 @@
       #        patches = [ ./change-hello-to-hi.patch ];
       #     });
       #  })
-      ( import ./helix-overlay.nix )
+      # ( import ./helix-overlay.nix )
       ];
       config = {
         allowUnfree = true;
@@ -56,10 +56,10 @@
     zathura   # ebooks viewer
     tree
     ripgrep
-    myhelix
+    helix
   ];
 
-  programs.myhelix = {
+  programs.helix = {
     enable = true;
     settings = {
       editor = {
@@ -67,6 +67,25 @@
         indent-guides.render = true;
       };
     };
+    extraPackages = with pkgs; [
+      nodePackages.bash-language-server
+      shellcheck
+      yaml-language-server
+      cmake-language-server
+      taplo-lsp
+      rnix-lsp
+      alejandra
+      python3Packages.python-lsp-server
+      clang-tools
+      rust-analyzer
+      haskellPackages.haskell-language-server
+      inputs.nickel.packages.default
+      inputs.nil.packages.default
+      gopls
+      shfmt
+      go
+      black  
+    ];
   };
 
   programs.git = {
