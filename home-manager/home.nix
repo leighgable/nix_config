@@ -47,6 +47,7 @@
 
   home.packages = with pkgs; [
     tmux
+    tmuxp
     google-chrome
     git
     gh
