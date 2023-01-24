@@ -59,6 +59,10 @@
     tree
     ripgrep
     helix
+    tldr
+    unzip
+    curl
+    wget
   ];
  
   programs.tmux = {
