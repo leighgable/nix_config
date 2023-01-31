@@ -51,6 +51,7 @@
     google-chrome
     git
     gh
+    glow
     emacs
     pass      # password manager
     feh       # image viewer
