@@ -10,10 +10,10 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     
-    helix = {
-      url = github:helix-editor/helix;
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
+    # helix = {
+    #   url = github:helix-editor/helix;
+    #   inputs.nixpkgs.follows = "nixpkgs-unstable";
+    # };
   
     # emacs overlay
     # emacs-overlay = {
