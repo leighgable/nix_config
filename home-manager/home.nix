@@ -3,7 +3,7 @@
 
 {
   # add home-manager modules here
-  imports = [];
+  imports = [ ./programs ];
 
   nixpkgs = {
     # add overlays here
@@ -36,7 +36,6 @@
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards
   # incompatible changes.
-  #
   # You can update Home Manager without changing this value. See
   # the Home Manager release notes for a list of state version
   # changes in each release.
@@ -59,11 +58,32 @@
     zathura   # ebooks viewer
     tree
     ripgrep
+    broot
     helix
     tldr
     unzip
     curl
     wget
+     # languages related
+    nixpkgs-fmt
+    lldb
+    haskell-language-server
+    gopls
+    cmake-language-server
+    nixpkgs-review
+    shfmt
+    pyright
+    rnix-lsp
+    rust-analyzer
+    sumneko-lua-language-server
+    taplo-lsp
+    taplo-cli
+    yaml-language-server
+    tree-sitter
+    stylua
+    black
+
+
   ];
  
   programs.tmux = {
@@ -96,34 +116,7 @@
     '';
   };
 
-  programs.helix = {
-    enable = true;
-    settings = {
-      editor = {
-        line-number = "absolute";
-        indent-guides.render = true;
-      };
-    };
-    # languages = with pkgs; [
-    #   nodePackages.bash-language-server
-    #   shellcheck
-    #   yaml-language-server
-    #   cmake-language-server
-    #   taplo-lsp
-    #   rnix-lsp
-    #   alejandra
-    #   python3Packages.python-lsp-server
-    #   clang-tools
-    #   rust-analyzer
-    #   haskellPackages.haskell-language-server
-    #   # inputs.nickel.packages.default
-    #   # inputs.nil.packages.default
-    #   gopls
-    #   shfmt
-    #   go
-    #   black  
-    # ];
-  };
+ # };
 
   programs.git = {
     enable = true;
