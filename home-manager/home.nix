@@ -3,8 +3,7 @@
 
 {
   # add home-manager modules here
-  imports = import ./programs;
-  # changed from imports = [];
+  imports = [];
 
   nixpkgs = {
     # add overlays here
