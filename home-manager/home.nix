@@ -19,7 +19,6 @@
       #        patches = [ ./change-hello-to-hi.patch ];
       #     });
       #  })
-      # ( import ./helix-overlay.nix )
       ];
       config = {
         allowUnfree = true;
@@ -42,7 +41,7 @@
   home.stateVersion = "22.11";
 
   # Let Home Manager install and manage itself.
-    programs.home-manager.enable = true;
+  programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
     tmux
@@ -58,9 +57,19 @@
     zathura   # ebooks viewer
     tree
     ripgrep
-    broot
-    helix
-    tldr
+    broot # filesystem browser
+    exa # ls type thing
+    bat # cat with syntax highlighting
+    starship # custom prompt
+    du-dust # disk usage
+    fd # simpler find
+    procs # ps in rust
+    tealdeer # tldr --update
+    bottom # top but rust
+    skim # rusty grep
+    # alacritty
+    # helix
+    # tldr
     unzip
     curl
     wget
@@ -82,10 +91,16 @@
     tree-sitter
     stylua
     black
-
-
   ];
- 
+  
+  programs.helix = {
+    enable = true;
+  }; # helix
+  # xdg.configFile = {
+  #   "helix/languages.toml".text = import ./config/languages.nix { inherit pkgs inputs system; };
+  #   "helix/themes/catppuccin_macchiato.toml".text = builtins.readFile ./config/themes/catppuccin_macchiato.toml;
+  # };
+  
   programs.tmux = {
     enable = true;
     shortcut = "a";
