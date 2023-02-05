@@ -83,7 +83,6 @@
     nixpkgs-review
     shfmt
     pyright
-    rnix-lsp
     rust-analyzer
     sumneko-lua-language-server
     taplo-lsp

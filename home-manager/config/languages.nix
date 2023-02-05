@@ -474,20 +474,20 @@ indent = { tab-width = 2, unit = "  " }
 name = "nickel"
 source = { git = "https://github.com/nickel-lang/tree-sitter-nickel", rev = "9d83db400b6c11260b9106f131f93ddda8131933" }
 
-[[language]]
-name = "nix"
-scope = "source.nix"
-injection-regex = "nix"
-file-types = ["nix"]
-shebangs = []
-roots = ["flake.nix"]
-comment-token = "#"
-language-server = { command = "${inputs}.rnix-lsp.defaultPackage.x86_64-linux/bin/rnix-lsp" }
-indent = { tab-width = 2, unit = "  " }
+# [[language]]
+# name = "nix"
+# scope = "source.nix"
+# injection-regex = "nix"
+# file-types = ["nix"]
+# shebangs = []
+# roots = ["flake.nix"]
+# comment-token = "#"
+# language-server = { command = "${inputs}.rnix-lsp.defaultPackage.x86_64-linux/bin/rnix-lsp" }
+# indent = { tab-width = 2, unit = "  " }
 
-[[grammar]]
-name = "nix"
-source = { git = "https://github.com/cstrahan/tree-sitter-nix", rev = "1b69cf1fa92366eefbe6863c184e5d2ece5f187d" }
+# [[grammar]]
+# name = "nix"
+# source = { git = "https://github.com/cstrahan/tree-sitter-nix", rev = "1b69cf1fa92366eefbe6863c184e5d2ece5f187d" }
 
 [[language]]
 name = "ruby"
