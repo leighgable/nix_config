@@ -93,13 +93,13 @@
     black
   ];
   
+  xdg.configFile = {
+    "helix/languages.toml".text = import ./config/languages.nix { inherit pkgs inputs system; };
+    # "helix/themes/catppuccin_macchiato.toml".text = builtins.readFile ./config/themes/catppuccin_macchiato.toml;
+  };
   programs.helix = {
     enable = true;
   }; # helix
-  # xdg.configFile = {
-  #   "helix/languages.toml".text = import ./config/languages.nix { inherit pkgs inputs system; };
-  #   "helix/themes/catppuccin_macchiato.toml".text = builtins.readFile ./config/themes/catppuccin_macchiato.toml;
-  # };
   
   programs.tmux = {
     enable = true;
