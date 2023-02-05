@@ -134,9 +134,9 @@
 	'';
   };
   
-  # environment.systemPackages = [
-  #   pkgs.bluez5-experimental
-  # ];
+  environment.systemPackages = [
+    pkgs.rnix-lsp
+  ];
   
   # TODO: Set your hostname
   networking.hostName = "nixos";

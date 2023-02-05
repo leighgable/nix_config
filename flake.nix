@@ -5,7 +5,7 @@
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
     nixpkgs-unstable.url = github:NixOS/nixpkgs/nixos-unstable;
-
+    rnix-lsp.url = github:nix-community/rnix-lsp;
     # Home manager
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";

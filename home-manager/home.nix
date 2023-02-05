@@ -75,7 +75,7 @@
     wget
      # languages related
     nixpkgs-fmt
-    rnix-lsp
+    # rnix-lsp
     lldb
     haskell-language-server
     gopls
