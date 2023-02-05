@@ -482,7 +482,7 @@ file-types = ["nix"]
 shebangs = []
 roots = ["flake.nix"]
 comment-token = "#"
-language-server = { command = "${inputs.rnix-lsp.defaultPackage.${system}}/bin/rnix-lsp" }
+language-server = { command = "${inputs}.rnix-lsp.defaultPackage.x86_64-linux/bin/rnix-lsp" }
 indent = { tab-width = 2, unit = "  " }
 
 [[grammar]]
