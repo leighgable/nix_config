@@ -143,16 +143,57 @@
     shell = {
       disabled = false;
       format = "$indicator";
-      # fish_indicator = "";
+      fish_indicator = "";
       bash_indicator = "[BASH](bright-white) ";
-      # zsh_indicator = "[ZSH](bright-white) ";
+      zsh_indicator = "[ZSH](bright-white) ";
     };
     username = {
       style_user = "bright-white bold";
       style_root = "bright-red bold";
     };
+    hostname = {
+      style = "bright-green bold";
+      ssh_only = true;
+    };
+    nix_shell = {
+      symbol = "";
+      format = "[$symbol$name]($style) ";
+      style = "bright-purple bold";
+    };
+    git_branch = {
+      only_attached = true;
+      format = "[$symbol$branch]($style) ";
+      symbol = "שׂ";
+      style = "bright-yellow bold";
+    };
+    git_commit = {
+      only_detached = true;
+      format = "[ﰖ$hash]($style) ";
+      style = "bright-yellow bold";
+    };
+    git_state = {
+      style = "bright-purple bold";
+    };
+    git_status = {
+      style = "bright-green bold";
+    };
+    directory = {
+      read_only = " ";
+      truncation_length = 0;
+    };
+    cmd_duration = {
+      format = "[$duration]($style) ";
+      style = "bright-blue";
+    };
+    jobs = {
+      style = "bright-green bold";
+    };
+    character = {
+      success_symbol = "[\\$](bright-green bold)";
+      error_symbol = "[\\$](bright-red bold)";
+    };
   };
-
+  
   programs.git = {
     enable = true;
     userName = "Leigh Gable";
