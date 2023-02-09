@@ -482,7 +482,7 @@ source = { git = "https://github.com/nickel-lang/tree-sitter-nickel", rev = "9d8
 # shebangs = []
 # roots = ["flake.nix"]
 # comment-token = "#"
-# language-server = { command = "${inputs}.rnix-lsp.defaultPackage.x86_64-linux/bin/rnix-lsp" }
+# language-server = { command = ".rnix-lsp.defaultPackage.x86_64-linux/bin/rnix-lsp" }
 # indent = { tab-width = 2, unit = "  " }
 
 # [[grammar]]
