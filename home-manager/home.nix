@@ -131,7 +131,12 @@
     '';
   };
   
+  
+  programs.bash.enable = true;
+  
   programs.dircolors.enable = true;
+  programs.dircolors.enableBashIntegration = true;
+  programs.starship.enableBashIntegration = true;
   programs.dircolors.extraConfig = ''
     TERM xterm-256color
   '';
