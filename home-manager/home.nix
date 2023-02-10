@@ -109,7 +109,6 @@
   
   programs.wezterm.enable = true;
   programs.wezterm.extraConfig = {
-    ''
     return {
         usemylib = mylib.do_fun();
         font = wezterm.font("JetBrains Mono"),
@@ -137,7 +136,6 @@
             },
          }
       }
-    ''
   };
   
   
