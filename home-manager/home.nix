@@ -30,6 +30,12 @@
   # paths it should manage.
   home.username = "leigh";
   home.homeDirectory = "/home/leigh";
+  
+  home.sessionVariables = {
+    EDITOR = "hx";
+    BROWSER = "google-chrome";
+    TERMINAL = "wezterm";
+  };
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
@@ -46,6 +52,7 @@
   home.packages = with pkgs; [
     tmux
     tmuxp
+    wezterm  # multipluxer shell
     google-chrome
     git
     gh
@@ -67,8 +74,7 @@
     tealdeer  # tldr --update
     bottom    # top but rust
     skim      # rusty grep
-    # alacritty
-    # helix
+    helix
     # tldr
     unzip
     curl
@@ -101,6 +107,41 @@
     enable = true;
   }; # helix
   
+  programs.wezterm.enable = true;
+  programs.wezterm.extraConfig = {
+    ''
+    return {
+        usemylib = mylib.do_fun();
+        font = wezterm.font("JetBrains Mono"),
+        font_size = 14.0,
+        color_scheme = "Catppuccin Latte",
+        hide_tab_bar_if_only_one_tab = true,
+        leader = { key = 'a', mods = 'CTRL', timeout_milliseconds = 1000 },
+        keys = {
+          {key="n", mods="SHIFT|CTRL", action="ToggleFullScreen"},
+          {
+            key = '|',
+            mods = 'LEADER|SHIFT',
+            action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' },
+          },
+          {
+            key = '-',
+            mods = 'LEADER|SHIFT',
+            action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' },
+          },
+            -- Send "CTRL-A" to the terminal when pressing CTRL-A, CTRL-A
+          {
+            key = 'a',
+            mods = 'LEADER|CTRL',
+            action = wezterm.action.SendString '\x01',
+            },
+         }
+      }
+    ''
+  };
+  
+  
+  programs.tmux.tmuxp.enable = true;
   programs.tmux = {
     enable = true;
     shortcut = "a";
@@ -121,7 +162,9 @@
       set -g default-terminal "xterm-256color"
       set -ga terminal-overrides ",*256col*:Tc"
       set -ga terminal-overrides '*:Ss=\E[%p1%d q:Se=\E[ q'
+      set -g allow-passthrough 'on' # just added, not sure about quotes
       set-environment -g COLORTERM "truecolor"
+      
       # Mouse works as expected
       set-option -g mouse on
       # easy-to-remember split pane commands
