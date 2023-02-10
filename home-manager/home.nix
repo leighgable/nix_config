@@ -109,6 +109,8 @@
   
   programs.wezterm.enable = true;
   programs.wezterm.extraConfig = {
+    ''
+    local mylib = require 'mylib';
     return {
         usemylib = mylib.do_fun();
         font = wezterm.font("JetBrains Mono"),
@@ -136,6 +138,7 @@
             },
          }
       }
+      ''
   };
   
   
