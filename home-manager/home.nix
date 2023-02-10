@@ -109,8 +109,7 @@
   
   programs.wezterm.enable = true;
   programs.wezterm.extraConfig =
-    '' 
-    {  
+    ''  
     local mylib = require 'mylib';
     return {
         usemylib = mylib.do_fun();
