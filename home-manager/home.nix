@@ -108,8 +108,9 @@
   }; # helix
   
   programs.wezterm.enable = true;
-  programs.wezterm.extraConfig = {
-    ''
+  programs.wezterm.extraConfig =
+    '' 
+    {  
     local mylib = require 'mylib';
     return {
         usemylib = mylib.do_fun();
@@ -119,27 +120,29 @@
         hide_tab_bar_if_only_one_tab = true,
         leader = { key = 'a', mods = 'CTRL', timeout_milliseconds = 1000 },
         keys = {
-          {key="n", mods="SHIFT|CTRL", action="ToggleFullScreen"},
-          {
-            key = '|',
-            mods = 'LEADER|SHIFT',
-            action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' },
-          },
-          {
-            key = '-',
-            mods = 'LEADER|SHIFT',
-            action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' },
-          },
-            -- Send "CTRL-A" to the terminal when pressing CTRL-A, CTRL-A
-          {
-            key = 'a',
-            mods = 'LEADER|CTRL',
-            action = wezterm.action.SendString '\x01',
+            {
+              key="n", mods="SHIFT|CTRL", action="ToggleFullScreen"
             },
-         }
-      }
-      ''
-  };
+            {
+              key = '|',
+              mods = 'LEADER|SHIFT',
+              action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' },
+            },
+            {
+              key = '-',
+              mods = 'LEADER|SHIFT',
+              action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' },
+            },
+              -- Send "CTRL-A" to the terminal when pressing CTRL-A, CTRL-A
+            {
+              key = 'a',
+              mods = 'LEADER|CTRL',
+              action = wezterm.action.SendString '\x01',
+            },
+         } # keys
+      } # return
+      '';
+  #  };  programs.wezterm.extraConfig
   
   
   programs.tmux.tmuxp.enable = true;
