@@ -214,7 +214,7 @@
   
   programs.starship.enable = true;
   programs.starship.settings = {
-    starship preset no-empty-icons;
+    preset = "no-empty-icons";
     add_newline = false;
     format = "$shlvl$shell$username$hostname$nix_shell$git_branch$git_commit$git_state$git_status$directory$jobs$cmd_duration$character";
     shlvl = {
