@@ -48,6 +48,11 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+  
+#   fonts.fontconfig.enable = true;
+#   home.packages = [
+#     (pkgs.nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
+#   ]; # someday!
 
   home.packages = with pkgs; [
     tmux
@@ -168,6 +173,8 @@
       set -g allow-passthrough 'on' # just added, not sure about quotes
       set-environment -g COLORTERM "truecolor"
       
+      set-option -g utf-8 on
+      
       # Mouse works as expected
       set-option -g mouse on
       # easy-to-remember split pane commands
@@ -214,7 +221,6 @@
   
   programs.starship.enable = true;
   programs.starship.settings = {
-    preset = "no-empty-icons";
     add_newline = false;
     format = "$shlvl$shell$username$hostname$nix_shell$git_branch$git_commit$git_state$git_status$directory$jobs$cmd_duration$character";
     shlvl = {
