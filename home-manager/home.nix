@@ -151,7 +151,7 @@
   #  };  programs.wezterm.extraConfig
   
   programs.direnv.enable = true;
-  programs.direnv.nix-direnv.enableFlakes = true;
+  programs.direnv.nix-direnv.enable = true;
   
   programs.tmux.tmuxp.enable = true;
   programs.tmux = {
