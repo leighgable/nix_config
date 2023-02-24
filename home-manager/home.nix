@@ -34,7 +34,7 @@
   home.sessionVariables = {
     EDITOR = "hx";
     BROWSER = "google-chrome";
-    TERMINAL = "wezterm";
+    # TERMINAL = "console";
   };
 
   # This value determines the Home Manager release that your
@@ -57,9 +57,10 @@
   home.packages = with pkgs; [
     tmux
     tmuxp
-    wezterm  # multipluxer shell
+    # wezterm  # multipluxer shell
     google-chrome
     git
+    nix-direnv
     gh
     glow
     emacs
@@ -79,6 +80,7 @@
     tealdeer  # tldr --update
     bottom    # top but rust
     skim      # rusty grep
+    zoxide    # directory jumper
     helix
     # tldr
     unzip
@@ -112,42 +114,44 @@
     enable = true;
   }; # helix
   
-  programs.wezterm.enable = true;
-  programs.wezterm.extraConfig =
-    ''  
-    local mylib = require 'mylib';
-    return {
-        usemylib = mylib.do_fun();
-        font = wezterm.font("JetBrains Mono"),
-        font_size = 14.0,
-        color_scheme = "Catppuccin Latte",
-        hide_tab_bar_if_only_one_tab = true,
-        leader = { key = 'a', mods = 'CTRL', timeout_milliseconds = 1000 },
-        keys = {
-            {
-              key="n", mods="SHIFT|CTRL", action="ToggleFullScreen"
-            },
-            {
-              key = '|',
-              mods = 'LEADER|SHIFT',
-              action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' },
-            },
-            {
-              key = '-',
-              mods = 'LEADER|SHIFT',
-              action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' },
-            },
-              -- Send "CTRL-A" to the terminal when pressing CTRL-A, CTRL-A
-            {
-              key = 'a',
-              mods = 'LEADER|CTRL',
-              action = wezterm.action.SendString '\x01',
-            },
-         }
-      }
-      '';
+  # programs.wezterm.enable = true;
+  # programs.wezterm.extraConfig =
+  #   ''  
+  #   local mylib = require 'mylib';
+  #   return {
+  #       usemylib = mylib.do_fun();
+  #       font = wezterm.font("JetBrains Mono"),
+  #       font_size = 14.0,
+  #       color_scheme = "Catppuccin Latte",
+  #       hide_tab_bar_if_only_one_tab = true,
+  #       leader = { key = 'a', mods = 'CTRL', timeout_milliseconds = 1000 },
+  #       keys = {
+  #           {
+  #             key="n", mods="SHIFT|CTRL", action="ToggleFullScreen"
+  #           },
+  #           {
+  #             key = '|',
+  #             mods = 'LEADER|SHIFT',
+  #             action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' },
+  #           },
+  #           {
+  #             key = '-',
+  #             mods = 'LEADER|SHIFT',
+  #             action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' },
+  #           },
+  #             -- Send "CTRL-A" to the terminal when pressing CTRL-A, CTRL-A
+  #           {
+  #             key = 'a',
+  #             mods = 'LEADER|CTRL',
+  #             action = wezterm.action.SendString '\x01',
+  #           },
+  #        }
+  #     }
+  #     '';
   #  };  programs.wezterm.extraConfig
   
+  programs.direnv.enable = true;
+  programs.direnv.nix-direnv.enableFlakes = true;
   
   programs.tmux.tmuxp.enable = true;
   programs.tmux = {
