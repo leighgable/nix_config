@@ -1,9 +1,11 @@
-{ inputs, outputs, lib, config, pkgs, system, ... }:
+{ inputs, outputs, lib, config, pkgs, system, nix-colors, ... }:
 
 
 {
   # add home-manager modules here
-  imports = [];
+  imports = [ ./programs
+              nix-colors.homeManagerModule
+             ];
 
   nixpkgs = {
     # add overlays here
@@ -25,7 +27,9 @@
         allowUnfreePredicate = (_: true);
       };
     };
-  
+
+  colorScheme = nix-colors.colorSchemes.fruit-soda;
+
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "leigh";
@@ -57,7 +61,7 @@
   home.packages = with pkgs; [
     tmux
     tmuxp
-    # wezterm  # multipluxer shell
+    # wezterm  # multiplexer shell
     google-chrome
     git
     nix-direnv
@@ -69,6 +73,7 @@
     moc       # music on the command line
     zathura   # ebooks viewer
     tree
+    sioyek
     ripgrep
     broot     # filesystem browser
     exa       # ls type thing
@@ -108,7 +113,7 @@
   
   xdg.configFile = {
     "helix/languages.toml".text = import ./config/languages.nix { inherit pkgs inputs system; };
-    # "helix/themes/catppuccin_macchiato.toml".text = builtins.readFile ./config/themes/catppuccin_macchiato.toml;
+    "helix/themes/catppuccin_macchiato.toml".text = builtins.readFile ./config/themes/catppuccin_macchiato.toml;
   };
   programs.helix = {
     enable = true;
@@ -191,37 +196,37 @@
   
   programs.bash.enable = true;
   
-  programs.dircolors.enable = true;
-  programs.dircolors.enableBashIntegration = true;
+  # programs.dircolors.enable = true;
+  # programs.dircolors.enableBashIntegration = true;
   programs.starship.enableBashIntegration = true;
-  programs.dircolors.extraConfig = ''
-    TERM xterm-256color
-  '';
-  programs.dircolors.settings = {
-    ".iso" = "01;31"; # .iso files bold red like .zip and other archives
-    ".gpg" = "01;33"; # .gpg files bold yellow
-    # Images to non-bold magenta instead of bold magenta like videos
-    ".bmp"   = "00;35";
-    ".gif"   = "00;35";
-    ".jpeg"  = "00;35";
-    ".jpg"   = "00;35";
-    ".mjpeg" = "00;35";
-    ".mjpg"  = "00;35";
-    ".mng"   = "00;35";
-    ".pbm"   = "00;35";
-    ".pcx"   = "00;35";
-    ".pgm"   = "00;35";
-    ".png"   = "00;35";
-    ".ppm"   = "00;35";
-    ".svg"   = "00;35";
-    ".svgz"  = "00;35";
-    ".tga"   = "00;35";
-    ".tif"   = "00;35";
-    ".tiff"  = "00;35";
-    ".webp"  = "00;35";
-    ".xbm"   = "00;35";
-    ".xpm"   = "00;35";
-  };
+  # programs.dircolors.extraConfig = ''
+  #   TERM xterm-256color
+  # '';
+  # programs.dircolors.settings = {
+  #   ".iso" = "01;31"; # .iso files bold red like .zip and other archives
+  #   ".gpg" = "01;33"; # .gpg files bold yellow
+  #   # Images to non-bold magenta instead of bold magenta like videos
+  #   ".bmp"   = "00;35";
+  #   ".gif"   = "00;35";
+  #   ".jpeg"  = "00;35";
+  #   ".jpg"   = "00;35";
+  #   ".mjpeg" = "00;35";
+  #   ".mjpg"  = "00;35";
+  #   ".mng"   = "00;35";
+  #   ".pbm"   = "00;35";
+  #   ".pcx"   = "00;35";
+  #   ".pgm"   = "00;35";
+  #   ".png"   = "00;35";
+  #   ".ppm"   = "00;35";
+  #   ".svg"   = "00;35";
+  #   ".svgz"  = "00;35";
+  #   ".tga"   = "00;35";
+  #   ".tif"   = "00;35";
+  #   ".tiff"  = "00;35";
+  #   ".webp"  = "00;35";
+  #   ".xbm"   = "00;35";
+  #   ".xpm"   = "00;35";
+  # };
   
   programs.starship.enable = true;
   programs.starship.settings = {

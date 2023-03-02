@@ -9,7 +9,7 @@
     # Home manager
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    
+    nix-colors.url = "github:misterio77/nix-colors";
     # helix = {
     #   url = github:helix-editor/helix;
     #   inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -28,7 +28,7 @@
     # nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nix-colors, ... }@inputs:
     let
       inherit (self) outputs;
       forAllSystems = nixpkgs.lib.genAttrs [
@@ -81,7 +81,7 @@
         # FIXME replace with your username@hostname
         "leigh@nixos" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-          extraSpecialArgs = { inherit inputs outputs; };
+          extraSpecialArgs = { inherit inputs outputs nix-colors; };
           modules = [
             # > Our main home-manager configuration file <
             ./home-manager/home.nix
