@@ -1,11 +1,11 @@
-{ inputs, outputs, lib, config, pkgs, system, nix-colors, ... }:
+{ inputs, outputs, lib, config, pkgs, system, ... }:
 
 
 {
   # add home-manager modules here
-  imports = [ ./programs
-              nix-colors.homeManagerModule
-             ];
+  imports = import ./programs;
+             # nix-colors.homeManagerModule
+             # ];
 
   nixpkgs = {
     # add overlays here
@@ -28,7 +28,7 @@
       };
     };
 
-  colorScheme = nix-colors.colorSchemes.fruit-soda;
+  # colorScheme = nix-colors.colorSchemes.fruit-soda;
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -86,7 +86,7 @@
     bottom    # top but rust
     skim      # rusty grep
     zoxide    # directory jumper
-    helix
+    # helix
     # tldr
     unzip
     curl
@@ -111,13 +111,13 @@
     black
   ];
   
-  xdg.configFile = {
-    "helix/languages.toml".text = import ./config/languages.nix { inherit pkgs inputs system; };
-    "helix/themes/catppuccin_macchiato.toml".text = builtins.readFile ./config/themes/catppuccin_macchiato.toml;
-  };
-  programs.helix = {
-    enable = true;
-  }; # helix
+  # xdg.configFile = {
+  #   "helix/languages.toml".text = import ./config/languages.nix { inherit pkgs inputs system; };
+  #   "helix/themes/catppuccin_macchiato.toml".text = builtins.readFile ./config/themes/catppuccin_macchiato.toml;
+  # };
+  # programs.helix = {
+  #   enable = true;
+  # }; # helix
   
   # programs.wezterm.enable = true;
   # programs.wezterm.extraConfig =
