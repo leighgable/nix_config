@@ -12,9 +12,9 @@ file-types = ["rs"]
 roots = ["Cargo.toml", "Cargo.lock"]
 auto-format = true
 comment-token = "//"
-language-server = { command = "${pkgs.rust-analyzer-nightly}/bin/rust-analyzer" }
+language-server = { command = "rust-analyser"}          # dollar{pkgs.rust-analyzer-nightly}/bin/rust-analyzer" }
 indent = { tab-width = 4, unit = "    " }
-formatter = { command = "${pkgs.rustfmt}/bin/rustfmt", args = [ "--edition", "2021" ] }
+formatter = { command = "rustfmt" }                               # dollar{pkgs.rustfmt}/bin/rustfmt", args = [ "--edition", "2021" ] }
 
 [language.auto-pairs]
 '(' = ')'
@@ -232,20 +232,6 @@ args = { console = "internalConsole", attachCommands = [ "platform select remote
 name = "cpp"
 source = { git = "https://github.com/tree-sitter/tree-sitter-cpp", rev = "e8dcc9d2b404c542fd236ea5f7208f90be8a6e89" }
 indent = { tab-width = 4, unit = "\t" }
-
-[[language]]
-name = "c-sharp"
-scope = "source.csharp"
-injection-regex = "c-?sharp"
-file-types = ["cs"]
-roots = ["sln", "csproj"]
-comment-token = "//"
-indent = { tab-width = 4, unit = "\t" }
-language-server = { command = "OmniSharp", args = [ "--languageserver" ] }
-
-[[grammar]]
-name = "c-sharp"
-source = { git = "https://github.com/tree-sitter/tree-sitter-c-sharp", rev = "9c494a503c8e2044bfffce57f70b480c01a82f03" }
 
 [[language]]
 name = "go"
