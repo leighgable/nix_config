@@ -45,15 +45,13 @@
       "locked": {
         "lastModified": 1672236234,
         "narHash": "sha256-dpBIuxcDEvJbLD8fTipE0A0JbQD1lZB94zYFPoh01PI=",
-        "owner": "misterio77",
-        "repo": "nix-colors",
+        "path": "/nix/store/kp2vw4f97m4zryfzvq1i0rqicf2c0fhc-source",
         "rev": "7e459f1d88ac54fc2f4b308adb5064863006e4b1",
-        "type": "github"
+        "type": "path"
       },
       "original": {
-        "owner": "misterio77",
-        "repo": "nix-colors",
-        "type": "github"
+        "id": "nix-colors",
+        "type": "indirect"
       }
     },
     "nixpkgs": {

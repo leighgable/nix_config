@@ -441,7 +441,7 @@ file-types = ["py"]
 shebangs = ["python"]
 roots = []
 comment-token = "#"
-language-server = { command = "pylsp" }
+language-server = { command = "black" }
 # TODO: pyls needs utf-8 offsets
 indent = { tab-width = 4, unit = "    " }
 
