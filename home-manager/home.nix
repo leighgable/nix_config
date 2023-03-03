@@ -96,11 +96,11 @@
     nodePackages.typescript-language-server
     nodePackages.ocaml-language-server
     texlab
-    clojure.lsp  
+    clojure-lsp  
     erlang-ls
     elixir_ls
-    llvmPackages_rocm.clang-tools-extra # clangd language server
     nil
+    llvmPackages_9.libclang  # provides clangd lsp
     lldb
     haskell-language-server
     gopls
