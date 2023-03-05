@@ -1,8 +1,8 @@
 [
   ./helix
-  ./zellij
-  # .starship.nix
-  ./alacritty
+ # ./zellij
+  ./starship.nix
+#  ./alacritty
   # ./tmux
   # ./direnv
   
