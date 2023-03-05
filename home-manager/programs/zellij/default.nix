@@ -12,6 +12,6 @@
       copy_command = "xclip -selection clipboard";
       layout_dir = "./layouts";
       theme_dir = ".themes";    
-    }
-  }
+    };
+  };
 } # end

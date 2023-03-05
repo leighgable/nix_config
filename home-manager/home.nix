@@ -119,50 +119,7 @@
     black
   ];
   
-  # xdg.configFile = {
-  #   "helix/languages.toml".text = import ./config/languages.nix { inherit pkgs inputs system; };
-  #   "helix/themes/catppuccin_macchiato.toml".text = builtins.readFile ./config/themes/catppuccin_macchiato.toml;
-  # };
-  # programs.helix = {
-  #   enable = true;
-  # }; # helix
-  
-  # programs.wezterm.enable = true;
-  # programs.wezterm.extraConfig =
-  #   ''  
-  #   local mylib = require 'mylib';
-  #   return {
-  #       usemylib = mylib.do_fun();
-  #       font = wezterm.font("JetBrains Mono"),
-  #       font_size = 14.0,
-  #       color_scheme = "Catppuccin Latte",
-  #       hide_tab_bar_if_only_one_tab = true,
-  #       leader = { key = 'a', mods = 'CTRL', timeout_milliseconds = 1000 },
-  #       keys = {
-  #           {
-  #             key="n", mods="SHIFT|CTRL", action="ToggleFullScreen"
-  #           },
-  #           {
-  #             key = '|',
-  #             mods = 'LEADER|SHIFT',
-  #             action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' },
-  #           },
-  #           {
-  #             key = '-',
-  #             mods = 'LEADER|SHIFT',
-  #             action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' },
-  #           },
-  #             -- Send "CTRL-A" to the terminal when pressing CTRL-A, CTRL-A
-  #           {
-  #             key = 'a',
-  #             mods = 'LEADER|CTRL',
-  #             action = wezterm.action.SendString '\x01',
-  #           },
-  #        }
-  #     }
-  #     '';
-  #  };  programs.wezterm.extraConfig
-  
+
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
   
@@ -184,12 +141,12 @@
 
     extraConfig = ''
       # https://old.reddit.com/r/tmux/comments/mesrci/tmux_2_doesnt_seem_to_use_256_colors/
-      # set -g default-terminal "xterm-256color"
-      # set -ga terminal-overrides ",*256col*:Tc"
-      # set -ga terminal-overrides '*:Ss=\E[%p1%d q:Se=\E[ q'
-      # set -g allow-passthrough 'on' # just added, not sure about quotes
-      # set-environment -g COLORTERM "truecolor"
-      
+      set -g default-terminal "xterm-256color"
+      set -ga terminal-overrides ",*256col*:Tc"
+      set -ga terminal-overrides '*:Ss=\E[%p1%d q:Se=\E[ q'
+      set -g allow-passthrough 'on' # just added, not sure about quotes
+      set-environment -g COLORTERM "truecolor"
+      set-window-option -g utf8 on
       set-option -g utf-8 on
       
       # Mouse works as expected
@@ -199,11 +156,7 @@
       bind - split-window -v -c "#{pane_current_path}"
       bind c new-window -c "#{pane_current_path}"
     '';
-  };
-  
-  programs.nushell.enable = true;
-  
-  
+  }; 
   
   programs.bash.enable = true;
   
@@ -239,12 +192,11 @@
   };
   
   programs.starship.enable = true;
-  programs.starship.enableNushellIntegration = true;
   programs.starship.settings = {
     add_newline = false;
     format = "$shlvl$shell$username$hostname$nix_shell$git_branch$git_commit$git_state$git_status$directory$jobs$cmd_duration$character";
     shlvl = {
-      disabled = false;
+      disabled = true;
       symbol = "ﰬ";
       style = "bright-red bold";
     };
