@@ -1,7 +1,8 @@
 [
   ./helix
+  ./zellij
   # .starship.nix
-  # ./alacritty
+  ./alacritty
   # ./tmux
   # ./direnv
   

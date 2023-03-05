@@ -133,6 +133,8 @@
 		}
 	'';
   };
+  # bash completion
+  environment.pathsToLink = [ "/share/bash-completion" ];
   
   # environment.systemPackages = [
   #   pkgs.rnix-lsp

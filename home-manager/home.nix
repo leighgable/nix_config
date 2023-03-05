@@ -78,7 +78,7 @@
     broot     # filesystem browser
     exa       # ls type thing
     bat       # cat with syntax highlighting
-    starship  # custom prompt
+    # starship
     du-dust   # disk usage
     fd        # simpler find
     procs     # ps in rust
@@ -184,11 +184,11 @@
 
     extraConfig = ''
       # https://old.reddit.com/r/tmux/comments/mesrci/tmux_2_doesnt_seem_to_use_256_colors/
-      set -g default-terminal "xterm-256color"
-      set -ga terminal-overrides ",*256col*:Tc"
-      set -ga terminal-overrides '*:Ss=\E[%p1%d q:Se=\E[ q'
-      set -g allow-passthrough 'on' # just added, not sure about quotes
-      set-environment -g COLORTERM "truecolor"
+      # set -g default-terminal "xterm-256color"
+      # set -ga terminal-overrides ",*256col*:Tc"
+      # set -ga terminal-overrides '*:Ss=\E[%p1%d q:Se=\E[ q'
+      # set -g allow-passthrough 'on' # just added, not sure about quotes
+      # set-environment -g COLORTERM "truecolor"
       
       set-option -g utf-8 on
       
@@ -201,12 +201,14 @@
     '';
   };
   
+  programs.nushell.enable = true;
+  
+  
   
   programs.bash.enable = true;
   
   programs.dircolors.enable = true;
   programs.dircolors.enableBashIntegration = true;
-  programs.starship.enableBashIntegration = true;
   programs.dircolors.extraConfig = ''
     TERM xterm-256color
   '';
@@ -237,11 +239,12 @@
   };
   
   programs.starship.enable = true;
+  programs.starship.enableNushellIntegration = true;
   programs.starship.settings = {
     add_newline = false;
     format = "$shlvl$shell$username$hostname$nix_shell$git_branch$git_commit$git_state$git_status$directory$jobs$cmd_duration$character";
     shlvl = {
-      disabled = true;
+      disabled = false;
       symbol = "ﰬ";
       style = "bright-red bold";
     };
