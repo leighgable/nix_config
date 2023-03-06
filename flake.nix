@@ -86,6 +86,7 @@
           modules = [
             # > Our main home-manager configuration file <
             ./home-manager/home.nix
+            ./fonts
           ];
         };
       };
