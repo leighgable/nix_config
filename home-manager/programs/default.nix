@@ -1,7 +1,7 @@
 [
   ./helix
-  ./font.nix
-  ./gtk.nix
+  # ./font.nix
+  # ./gtk.nix
  # ./zellij
  # ./starship.nix
  # ./alacritty
