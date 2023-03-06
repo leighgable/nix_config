@@ -71,7 +71,6 @@
           modules = [
             # > Our main nixos configuration file <
             ./nixos/configuration.nix
-            # ./fonts
           ];
         };
       };
@@ -86,7 +85,6 @@
           modules = [
             # > Our main home-manager configuration file <
             ./home-manager/home.nix
-            ./fonts
           ];
         };
       };
