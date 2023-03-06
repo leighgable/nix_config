@@ -71,7 +71,7 @@
           modules = [
             # > Our main nixos configuration file <
             ./nixos/configuration.nix
-            ./fonts
+            # ./fonts
           ];
         };
       };
