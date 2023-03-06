@@ -18,7 +18,7 @@
     ./hardware-configuration.nix
   ];
 
-  fonts.enableFontDir = true;
+  fonts.fontDir.enable = true;
   fonts.fonts = with pkgs; [
                             (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "Symbols" ]; })
                             inriafonts
