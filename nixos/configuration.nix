@@ -23,13 +23,6 @@
                             (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "Symbols" ]; })
                             inriafonts
   ];
-  fontconfig = {
-    defaultFonts = {
-      serif = [ "InriaSerif" ];
-      sansSerif = [ "FiraCode" ];
-      monospace = [ "FiraCode" ];
-    };
-  };
 
   nixpkgs = {
     # You can add overlays here
