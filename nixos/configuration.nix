@@ -20,7 +20,7 @@
 
   fonts.fontDir.enable = true;
   fonts.fonts = with pkgs; [
-                            (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "Symbols" ]; })
+                            (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
                             inriafonts
   ];
 
