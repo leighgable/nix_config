@@ -1,9 +1,10 @@
 [
   ./helix
+  ./gtk.nix
  # ./zellij
-  ./starship.nix
-#  ./alacritty
-  # ./tmux
-  # ./direnv
+ # ./starship.nix
+ # ./alacritty
+ # ./tmux
+ # ./direnv
   
 ]
