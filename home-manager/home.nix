@@ -272,7 +272,54 @@
     };
   };
   
-  programs.gpg-agent = {
+  programs.gpg = {
+    enable = true;
+    settings = {
+      # add default-key = "8632E1D006B8EFB1";
+      no-comments = false;
+      # Get rid of the copyright notice
+      no-greeting = true;
+      # Because some mailers change lines starting with "From " to ">From "
+      # it is good to handle such lines in a special way when creating
+      # cleartext signatures; all other PGP versions do it this way too.
+      no-escape-from-lines = true;
+      # Use a modern charset
+      charset = "utf-8";
+      ### Show keys settings
+      # Always show long keyid
+      keyid-format = "0xlong";
+      # Always show the fingerprint
+      with-fingerprint = true;
+      # Automatic key location
+      auto-key-locate = "cert pka ldap keyserver";
+      ### Private keys password protection options
+      # Cipher algorithm
+      s2k-cipher-algo = "AES256";
+      # Hashing algorithm
+      s2k-digest-algo = "SHA512";
+      # Add a 8-byte salt and iterate password hash
+      s2k-mode = "3";
+      # Number of password hashing iterations
+      s2k-count = "65000000";
+      ### Change defaults algorithms
+      # Personal symmetric algos
+      personal-cipher-preferences = "AES256 TWOFISH CAMELLIA256 AES192 CAMELLIA192 AES CAMELLIA128 BLOWFISH";
+      # Personal hashing algos
+      personal-digest-preferences = "SHA512 SHA384 SHA256 SHA224 SHA1 RIPEMD160 MD5";
+      # Personal compression algos
+      personal-compress-preferences = "ZLIB BZIP2 ZIP";
+      # Default algorithms
+      default-preference-list = "SHA512 SHA384 SHA256 SHA224 AES256 TWOFISH CAMELLIA256 AES192 CAMELLIA192 AES CAMELLIA128 BLOWFISH ZLIB BZIP2 ZIP Uncompressed";
+      # Certificate hashing algorithm
+      cert-digest-algo = "SHA512";
+      # Minimize some attacks on subkey signing (from gpg docs)
+      require-cross-certification = true;
+      # Get rid of version info in output files
+      no-emit-version = true;
+    };
+  };
+  
+  services.gpg-agent = {
     enable = true;
     enableSshSupport = true;
     pinentryFlavor = "gnome3";
