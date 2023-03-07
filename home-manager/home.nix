@@ -257,6 +257,7 @@
     enable = true;
     userName = "Leigh Gable";
     userEmail = "leighgable@gmail.com";
+    signingKey = "713802B5DD843245";
     aliases = {
       ci = "commit";
       s = "status";
@@ -275,7 +276,7 @@
   programs.gpg = {
     enable = true;
     settings = {
-      # add default-key = "8632E1D006B8EFB1";
+      default-key = "713802B5DD843245";
       no-comments = false;
       # Get rid of the copyright notice
       no-greeting = true;
