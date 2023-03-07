@@ -272,9 +272,10 @@
     };
   };
   
-  services.gpg-agent = {
+  programs.gpg-agent = {
     enable = true;
     enableSshSupport = true;
+    pinentryFlavor = "gnome3";
   };
 
 }
