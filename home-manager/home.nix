@@ -257,7 +257,9 @@
     enable = true;
     userName = "Leigh Gable";
     userEmail = "leighgable@gmail.com";
-    signingKey = "713802B5DD843245";
+    signing = { 
+      key = "713802B5DD843245";
+    };
     aliases = {
       ci = "commit";
       s = "status";
