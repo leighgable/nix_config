@@ -96,6 +96,7 @@
     nixpkgs-fmt
     nodePackages.typescript-language-server
     nodePackages.ocaml-language-server
+    nodePackages.pyright
     texlab
     clojure-lsp  
     erlang-ls
