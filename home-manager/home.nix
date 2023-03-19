@@ -118,7 +118,7 @@
     tree-sitter
     stylua
     # black
-    python311Packages.pylsp-mypy
+    pylsp-mypy
   ];
   
 
