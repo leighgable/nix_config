@@ -88,6 +88,7 @@
     zoxide    # directory jumper
     # helix
     # tldr
+    xsel
     unzip
     curl
     wget
@@ -116,7 +117,8 @@
     yaml-language-server
     tree-sitter
     stylua
-    black
+    # black
+    python311Packages.pylsp-mypy
   ];
   
 
@@ -131,7 +133,7 @@
     baseIndex = 1;
     newSession = true;
     # Stop tmux+escape craziness.
-    escapeTime = 0;
+    escapeTime = 20;
     # Force tmux to use /tmp for sockets (WSL2 compat)
     secureSocket = false;
 
