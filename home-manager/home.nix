@@ -117,8 +117,7 @@
     yaml-language-server
     tree-sitter
     stylua
-    # black
-    pylsp-mypy
+    black
   ];
   
 
