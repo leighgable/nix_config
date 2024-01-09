@@ -75,7 +75,7 @@
     zellij
     ripgrep
     broot     # filesystem browser
-    exa       # ls type thing
+    eza       # ls type thing
     bat       # cat with syntax highlighting
     du-dust   # disk usage
     fd        # simpler find
