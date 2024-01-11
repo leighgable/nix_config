@@ -83,7 +83,7 @@
     moc       # music on the command line
     tree
     sioyek
-    helix
+    # helix
     zellij
     ripgrep
     broot     # filesystem browser
