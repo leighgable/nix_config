@@ -1,0 +1,117 @@
+[language-server]
+clangd = { command = "clangd", args = ['--fallback-style=Webkit'] }
+
+[language-server.texlab]
+command = "texlab"
+cleanArtifacts = true
+
+[language-server.texlab.config.texlab.build]
+onSave = true
+forwardSearchAfter = true
+
+[language-server.texlab.config.texlab.forwardSearch]
+executable = "sioyek"
+args = [
+  "--execute-command",
+  "turn_on_synctex",
+  "%p",
+  "--forward-search-file",
+  "%f",
+  "--forward-search-line",
+  "%l",
+]
+
+[language-server.texlab.config.texlab.chktex]
+onEdit = true
+
+
+[language-server.ruff-lsp]
+command = "ruff-lsp"
+
+[[language]]
+name = "python"
+roots = ["pyproject.toml", "."]
+language-servers = [ "pyright","ruff-lsp" ]
+auto-format = true
+
+# Add this to pyproject.toml in root directory of project to add extra paths.
+# [tool.pyright]
+# extraPaths = ["./test"]
+
+
+# [[language]]
+# name = "verilog"
+# formatter = { command = 'verible-verilog-format', args = ["-"] }
+# auto-format = true
+# indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "nix"
+formatter = { command = 'alejandra', args = [] }
+language-servers = ["nixd"]
+auto-format = true
+
+[language-server.nixd]
+command = "nixd"
+
+[[language]]
+name = "html"
+formatter = { command = 'prettier', args = ["--parser", "html"] }
+
+[[language]]
+name = "json"
+formatter = { command = 'prettier', args = ["--parser", "json"] }
+
+[[language]]
+name = "css"
+formatter = { command = 'prettier', args = ["--parser", "css"] }
+
+[[language]]
+name = "javascript"
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+auto-format = true
+
+[[language]]
+name = "typescript"
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+auto-format = true
+
+[[language]]
+name = "markdown"
+formatter = { command = 'prettier', args = ["--parser", "markdown"] }
+# auto-format = true
+
+[[language]]
+name = "toml"
+auto-format = false
+
+[[language]]
+name = "cpp"
+auto-format = true
+language-servers = ["clangd"]
+indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "c"
+auto-format = true
+language-servers = ["clangd"]
+indent = { tab-width = 4, unit = "    " }
+
+# Diagnostics:
+#   Suppress: "pp_including_mainfile_in_preamble"
+# Add above codes into the .clangd file under your project directory.
+
+# Create compile_commands.json using this: ` cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 ..`
+
+[[language]]
+name = "latex"
+language-servers = ["texlab"]
+
+[[language]]
+name = "rust"
+auto-format = true
+[language.formatter]
+command = "rustfmt"
+
+[language-server.rust-analyzer.config.check]
+command = "clippy"

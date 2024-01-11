@@ -77,9 +77,59 @@
   };
 
   # FIXME: Add the rest of your current configuration
-
+    
+  networking.networkmanager.enable = true;
+  virtualisation.docker.enable = true;
   # TODO: Set your hostname
   networking.hostName = "think";
+
+
+
+  # Enable the X11 windowing system.
+  services.xserver.enable = true;
+
+  # Enable the GNOME Desktop Environment.
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
+
+  # Configure keymap in X11
+  services.xserver = {
+    layout = "us";
+    xkbVariant = "";
+  };
+
+  # Enable CUPS to print documents.
+  services.printing.enable = true;
+
+  # Enable sound with pipewire.
+  sound.enable = false;
+  hardware.pulseaudio.enable = false;
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.package = pkgs.bluez;
+  # hardware.bluetooth.hsphfpd.enable = true;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    audio.enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    wireplumber.enable = true;
+    # If you want to use JACK applications, uncomment this
+    #jack.enable = true;
+  };
+ #  environment.etc = {
+	#   "wireplumber/bluetooth.lua.d/51-bluez-config.lua".text = ''
+	# 	  bluez_monitor.properties = {
+	# 		  ["bluez5.enable-sbc-xq"] = true,
+	# 		  ["bluez5.enable-msbc"] = true,
+	# 		  ["bluez5.enable-hw-volume"] = true,
+	# 		  ["bluez5.headset-roles"] = "[ hsp_hs hsp_ag hfp_hf hfp_ag ]"
+	# 	}
+	# '';
+ #  };
+  # bash completion
+  environment.pathsToLink = [ "/share/bash-completion" ];
 
   # TODO: This is just an example, be sure to use whatever bootloader you prefer
   boot.loader.systemd-boot.enable = true;
@@ -99,7 +149,7 @@
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
       ];
       # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
-      extraGroups = ["wheel"];
+      extraGroups = ["wheel" "audio" "networkmanager" "docker" "lp"];
     };
   };
 
