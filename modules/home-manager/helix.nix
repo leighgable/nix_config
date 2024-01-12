@@ -1,7 +1,7 @@
 { ... }:
 {
   imports = [
-    ./config/default.nix
+    ./config
   ];
 
   programs.helix = {
@@ -29,7 +29,7 @@
         popup-border = "all";
         soft-wrap.enable = true;
         completion-replace = true;
-        cursor-word = true;
+        # cursor-word = true;
 
         sticky-context = {
           enable = true;
@@ -68,15 +68,7 @@
       };
 
       keys.normal = {
-        "X" = "extend_line_above";
-        "C-q" = ":bc";
-        "C-d" = ["half_page_down" "align_view_center"];
-        "C-u" = ["half_page_up" "align_view_center"];
-      };
-
-      keys.normal."\\" = {
-        "t" = [":vs ~/todo.md"];
-      };
+        "X" = "extend_line_above"; };
     };
   };
   

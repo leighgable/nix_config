@@ -13,6 +13,7 @@
     # If you want to use modules your own flake exports (from modules/home-manager):
     # outputs.homeManagerModules.example
     (import ../modules/home-manager/helix.nix {inherit pkgs config lib;})
+    (import ../modules/home-manager/starship.nix {inherit pkgs config lib;})
     # (import ./programs/helix { inherit pkgs lib inputs ; })
     # (import ./programs/helix/languages.nix { inherit pkgs lib; })
     # (import ./programs/zellij { inherit pkgs config; })
