@@ -23,18 +23,16 @@
         color-modes = true;
         idle-timeout = 1;
         true-color = true;
-        rainbow-brackets = true;
         bufferline = "always";
         rulers = [ 100 ];
-        popup-border = "all";
         soft-wrap.enable = true;
         completion-replace = true;
         # cursor-word = true;
 
-        sticky-context = {
-          enable = true;
-          indicator = false;
-        };
+        # sticky-context = {
+        #   enable = true;
+        #   indicator = false;
+        # };
 
         lsp = {
           display-messages = true;
@@ -63,7 +61,6 @@
         };
         indent-guides = {
           render = true;
-          rainbow-option = "normal";
         };
       };
 
