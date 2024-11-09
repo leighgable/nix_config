@@ -60,23 +60,22 @@
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
   # home.packages = with pkgs; [ steam ];
-  programs.vscode = {
-    enable = true;
-    package = pkgs.vscodium;
-    extensions = with pkgs.vscode-extensions; [
-      vscodevim.vim
-      rust-lang.rust-analyzer
-      xaver.clang-format
-      ms-python.python
-      ms-python.black-formatter
-      ms-toolsai.jupyter
-      yzhang.markdown-all-in-one
-    ];
-  };
+  # programs.vscode = {
+  #   enable = true;
+  #   package = pkgs.vscodium;
+  #   extensions = with pkgs.vscode-extensions; [
+  #     vscodevim.vim
+  #     rust-lang.rust-analyzer
+  #     xaver.clang-format
+  #     ms-python.python
+  #     ms-python.black-formatter
+  #     ms-toolsai.jupyter
+  #     yzhang.markdown-all-in-one
+  #   ];
+  # };
 
   home.packages = with pkgs; [
     pkgs.unstable.google-chrome 
-    nix-direnv
     gh
     glow
     pass      # password manager
@@ -84,7 +83,6 @@
     moc       # music on the command line
     tree
     sioyek
-    # helix
     zellij
     ripgrep
     broot     # filesystem browser
@@ -101,6 +99,8 @@
     unzip
     curl
     wget
+    ffmpeg
+    wl-clipboard
   ];
   # Enable home-manager and git
   programs.home-manager.enable = true;
@@ -125,6 +125,26 @@
       git_protocol = "ssh";
       prompt = "enabled";
     };
+  };
+
+  programs.bash = {
+    enable = true;
+    shellAliases = {
+      l = "eza -alh";
+      ll = "eza -l";
+      ls = "eza";
+      ycwd = "echo \"My current directory is: $(pwd)\"";
+      tl = "compgen -c | sk | xargs tldr";
+      fman = "compgen -c | sk | xargs man";
+      bg = "du -ah . | sort -hr | head -n 10";
+      nnck = "rg | xargs du -sh | sort -hr | sk -m --header \"Select a file or directory\" --preview='cat $(filename{})' | awk '{print $2}'";
+    };
+  };
+
+  programs.direnv = {
+    enable = true;
+    enableBashIntegration = true;
+    nix-direnv.enable = true;
   };
   
   programs.gpg = {

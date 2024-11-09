@@ -76,6 +76,9 @@
     auto-optimise-store = true;
   };
 
+  # Hack to avoid stall on suspend.
+  systemd.services."pre-sleep".wantedBy = lib.mkForce [ ];
+
   # FIXME: Add the rest of your current configuration
     
   networking.networkmanager.enable = true;

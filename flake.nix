@@ -8,7 +8,7 @@
     # at the same time. Here's an working example:
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
-
+    # ollama.url = "github:abysssol/ollama-flake";
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -25,6 +25,7 @@
     self,
     nixpkgs,
     home-manager,
+    # ollama,
     ...
   } @ inputs: let
     inherit (self) outputs;
