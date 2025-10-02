@@ -6,16 +6,16 @@
     settings = {
       add_newline = false;
       character = {
-        success_symbol = "[>](bold blue)";
-        error_symbol = "[>](bold red)";
+        success_symbol = "[➜](bold blue)"; # ⇶
+        error_symbol = "[➜](bold red)";
       };
       format = builtins.concatStringsSep "" [
-        "$character"
         # "$username"
         # "$hostname"
-        # "$shlvl"
+        "$shlvl"
         # "$kubernetes"
-        # "$directory"
+        "$directory"
+        "$character"
         # # "$vcsh"
         # "$git_branch"
         # "$git_commit"
@@ -45,13 +45,13 @@
         # "$python"
         # # "$red"
         # "$ruby"
-        # "$rust"
+        "$rust"
         # # "$scala"
         # # "$swift"
         # "$terraform"
         # # "$vagrant"
         # # "$zig"
-        # "$nix_shell"
+        "$nix_shell"
         # # "$conda"
         # "$memory_usage"
         # "$aws"

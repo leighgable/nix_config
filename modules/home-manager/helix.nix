@@ -33,7 +33,8 @@
     ];
 
     settings = {
-
+      theme = "gruvbox";  # onedark
+      
       editor = {
         color-modes = true;
         cursorline = true;
@@ -66,7 +67,7 @@
         statusline = {
           left = [ "mode" "file-name" "spinner" "read-only-indicator" "file-modification-indicator" ];
           right = [ "diagnostics" "selections" "register" "file-type" "file-line-ending" "position" ];
-          mode.normal = "";
+          mode.normal = "N";
           mode.insert = "I";
           mode.select = "S";
         };
@@ -100,6 +101,7 @@
       language = [
         {
           name = "css";
+          scope = "source.css";
           language-servers = [ "vscode-css-language-server" "gpt" ];
           formatter = {
             command = "prettier";
@@ -109,6 +111,7 @@
         }
         {
           name = "go";
+          scope = "source.go";
           language-servers = [ "gopls" "golangci-lint-lsp" "gpt" ];
           formatter = {
             command = "goimports";
@@ -117,6 +120,7 @@
         }
         {
           name = "html";
+          scope = "source.html";
           language-servers = [ "vscode-html-language-server" "gpt" ];
           formatter = {
             command = "prettier";
@@ -126,6 +130,7 @@
         }
         {
           name = "javascript";
+          scope = "source.js";
           language-servers = [
             { name = "typescript-language-server"; except-features = [ "format" ]; }
             "biome"
@@ -135,6 +140,7 @@
         }
         {
           name = "json";
+          source = "source.json";
           language-servers = [
             { name = "vscode-json-language-server"; except-features = [ "format" ]; }
             "biome"
@@ -147,6 +153,7 @@
         }
         {
           name = "jsonc";
+          source = "source.jsonc";
           language-servers = [
             { name = "vscode-json-language-server"; except-features = [ "format" ]; }
             "biome"
@@ -160,6 +167,7 @@
         }
         {
           name = "jsx";
+          source = "source.jsx";
           language-servers = [
             { name = "typescript-language-server"; except-features = [ "format" ]; }
             "biome"
@@ -173,6 +181,7 @@
         }
         {
           name = "markdown";
+          source = "source.md";
           language-servers = [ "marksman" "gpt" ];
           formatter = {
             command = "prettier";
@@ -182,6 +191,7 @@
         }
         {
           name = "nix";
+          source = "source.nix";
           formatter = {
             command = "nixpkgs-fmt";
           };
@@ -189,6 +199,7 @@
         }
         {
           name = "python";
+          source = "source.py";
           language-servers = [ "ruff" ];
           formatter = {
             command = "sh";
@@ -198,11 +209,13 @@
         }
         {
           name = "rust";
+          source = "source.rs";
           language-servers = [ "rust-analyzer" "gpt" ];
           auto-format = true;
         }
         {
           name = "scss";
+          source = "source.scss";
           language-servers = [ "vscode-css-language-server" "gpt" ];
           formatter = {
             command = "prettier";
@@ -212,6 +225,7 @@
         }
         {
           name = "sql";
+          source = "source.sql";
           language-servers = [ "gpt" ];
           formatter = {
             command = "pg_format";
@@ -221,6 +235,7 @@
         }
         {
           name = "toml";
+          source = "source.toml";
           language-servers = [ "taplo" ];
           formatter = {
             command = "taplo";
@@ -230,6 +245,7 @@
         }
         {
           name = "tsx";
+          source = "source.tsx";
           language-servers = [
             { name = "typescript-language-server"; except-features = [ "format" ]; }
             "biome"
@@ -243,6 +259,7 @@
         }
         {
           name = "typescript";
+          source = "source.ts";
           language-servers = [
             { name = "typescript-language-server"; except-features = [ "format" ]; }
             "biome"
@@ -256,6 +273,7 @@
         }
         {
           name = "yaml";
+          source = "source.yml";
           language-servers = [ "yaml-language-server" ];
           formatter = {
             command = "prettier";

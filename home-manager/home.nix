@@ -73,10 +73,11 @@
   #     yzhang.markdown-all-in-one
   #   ];
   # };
-
+  fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
-    pkgs.unstable.google-chrome 
+    pkgs.unstable.google-chrome
     gh
+    helvum    # patchbay gui for pipewire
     glow
     pass      # password manager
     feh       # image viewer
@@ -101,12 +102,15 @@
     wget
     ffmpeg
     wl-clipboard
+    lynx
+    # pkgs.unstable.limbo # sqlite for rust
   ];
   # Enable home-manager and git
   programs.home-manager.enable = true;
 
   programs.git = {
     enable = true;
+    lfs.enable = true;
     userName = "Leigh Gable";
     userEmail = "leighgable@gmail.com";
     signing = { 
@@ -197,7 +201,7 @@
   services.gpg-agent = {
     enable = true;
     enableSshSupport = true;
-    pinentryFlavor = "gnome3";
+    # pinentryPackage = "gnome3";
   };
 
   # Nicely reload system units when changing configs
