@@ -9,7 +9,7 @@
   outputs = { self, nixpkgs, home-manager, ... }: {
       nixosModules = ./modules/nixos;
       
-      homeManagerModules = ./modules/home-manager;
+#      homeManagerModules = ./modules/home-manager;
 
       nixosConfigurations.think = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit (self) inputs; };
