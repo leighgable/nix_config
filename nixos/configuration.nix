@@ -10,6 +10,7 @@
   # You can import other NixOS modules here
   imports = [
     inputs.home-manager.nixosModules.home-manager
+    # inputs.nvf.nixosModules.default
     ./hardware-configuration.nix
   ];
   home-manager = {
@@ -20,44 +21,14 @@
     users.leigh = ../home-manager/home.nix; 
   };
   nixpkgs = {
-    # You can add overlays here
     overlays = [
-      # Add overlays your own flake exports (from overlays and pkgs dir):
-      # outputs.overlays.additions
-      # outputs.overlays.modifications
-      # outputs.overlays.unstable-packages
-
-      # You can also add overlays exported from other flakes:
-      # neovim-nightly-overlay.overlays.default
-
-      # Or define it inline, for example:
-      # (final: prev: {
-      #   hi = final.hello.overrideAttrs (oldAttrs: {
-      #     patches = [ ./change-hello-to-hi.patch ];
-      #   });
-      # })
     ];
-    # Configure your nixpkgs instance
     config = {
-      # Disable if you don't want unfree packages
       allowUnfree = true;
     };
   };
 
-  # This will add each flake input as a registry
-  # To make nix3 commands consistent with your flake
-  nix.registry = (lib.mapAttrs (_: flake: {inherit flake;})) ((lib.filterAttrs (_: lib.isType "flake")) inputs);
-
-  # This will additionally add your inputs to the system's legacy channels
-  # Making legacy nix commands consistent as well, awesome!
-  nix.nixPath = ["/etc/nix/path"];
-  environment.etc =
-    lib.mapAttrs'
-    (name: value: {
-      name = "nix/path/${name}";
-      value.source = value.flake;
-    })
-    config.nix.registry;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   nix.settings = {
     # Enable flakes and new 'nix' command
@@ -67,10 +38,8 @@
   };
 
   # Hack to avoid stall on suspend.
-  systemd.services."pre-sleep".wantedBy = lib.mkForce [ ];
-
-  # FIXME: Add the rest of your current configuration
-    
+  # systemd.services."pre-sleep".wantedBy = lib.mkForce [ ];
+ 
   networking.networkmanager.enable = true;
   virtualisation.docker.enable = true;
   # TODO: Set your hostname
@@ -82,13 +51,44 @@
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
     xkb.layout = "us";
     xkb.variant = "";
+  };
+
+  programs.nvf = {
+    enable = true;
+    settings = {
+      vim.viAlias = true; 
+      vim.vimAlias = true;
+      vim.options = {
+        tabstop = 2;
+
+      };
+      vim.lsp = {
+        enable = true;
+        };
+      vim.languages = {
+        rust.enable = true;
+        rust.lsp.enable = true;
+        clang.enable = true;
+        clang.lsp.enable = true;
+        clang.lsp.servers = [ "clangd" ];
+        clang.treesitter.enable = true;
+        python = {
+          enable = true;
+          lsp.enable = true;
+          lsp.servers = [ "python-lsp-server" ];
+          format.enable = true;
+          format.type = [ "ruff" ];
+          treesitter.enable = true;
+          };
+      };
+    };
   };
 
   # Enable CUPS to print documents.

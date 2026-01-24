@@ -1,80 +1,20 @@
-# This is your home-manager configuration file
-# Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 {
   inputs,
-  lib,
   config,
   pkgs,
   ...
 }: {
-  # You can import other home-manager modules here
   imports = [
-    # If you want to use modules your own flake exports (from modules/home-manager):
-    # outputs.homeManagerModules.example
-    (import ../modules/home-manager/helix.nix {inherit pkgs config lib;})
-    (import ../modules/home-manager/starship.nix {inherit pkgs config lib;})
-    # (import ./programs/helix { inherit pkgs lib inputs ; })
-    # (import ./programs/helix/languages.nix { inherit pkgs lib; })
-    # (import ./programs/zellij { inherit pkgs config; })
-    # Or modules exported from other flakes (such as nix-colors):
-    # inputs.nix-colors.homeManagerModules.default
+    # inputs.nixvim.homeModules.nixvim
+   ];
 
-    # You can also split up your configuration and import pieces of it here:
-    # ./nvim.nix
-  ];
-
-  nixpkgs = {
-    # You can add overlays here
-    overlays = [
-      # Add overlays your own flake exports (from overlays and pkgs dir):
-      # outputs.overlays.additions
-      # outputs.overlays.modifications
-      # outputs.overlays.unstable-packages
-
-      # You can also add overlays exported from other flakes:
-      # neovim-nightly-overlay.overlays.default
-
-      # Or define it inline, for example:
-      # (final: prev: {
-      #   hi = final.hello.overrideAttrs (oldAttrs: {
-      #     patches = [ ./change-hello-to-hi.patch ];
-      #   });
-      # })
-    ];
-    # Configure your nixpkgs instance
-    config = {
-      # Disable if you don't want unfree packages
-      allowUnfree = true;
-      # Workaround for https://github.com/nix-community/home-manager/issues/2942
-      allowUnfreePredicate = _: true;
-    };
-  };
-
-  # TODO: Set your username
   home = {
     username = "leigh";
     homeDirectory = "/home/leigh";
   };
-
-  # Add stuff for your user as you see fit:
-  # programs.neovim.enable = true;
-  # home.packages = with pkgs; [ steam ];
-  # programs.vscode = {
-  #   enable = true;
-  #   package = pkgs.vscodium;
-  #   extensions = with pkgs.vscode-extensions; [
-  #     vscodevim.vim
-  #     rust-lang.rust-analyzer
-  #     xaver.clang-format
-  #     ms-python.python
-  #     ms-python.black-formatter
-  #     ms-toolsai.jupyter
-  #     yzhang.markdown-all-in-one
-  #   ];
-  # };
-  fonts.fontconfig.enable = true;
+  
   home.packages = with pkgs; [
-    pkgs.unstable.google-chrome
+    google-chrome
     gh
     helvum    # patchbay gui for pipewire
     glow
@@ -88,7 +28,7 @@
     broot     # filesystem browser
     eza       # ls type thing
     bat       # cat with syntax highlighting
-    du-dust   # disk usage
+    dust   # disk usage
     fd        # simpler find
     procs     # ps in rust
     tealdeer  # tldr --update
@@ -103,24 +43,66 @@
     wl-clipboard
     lynx
     iamb
-    # pkgs.unstable.limbo # sqlite for rust
   ];
+
+  #programs.nixvim = {
+  #  enable = true;
+  #  opts = {
+  #    number = true;
+  #    relativenumber = true;
+  #    shiftwidth = 2;
+  #    autoindent = true;
+  #    expandtab = true;
+  #  };
+  #  plugins.lightline.enable = true;
+  #  plugins = { 
+  #    lsp = {
+  #      enable = true;
+  #      lspServersToEnable = "all";
+  #      servers = {
+  #        lua_ls.enable = true;
+#	  clangd.enable = true;
+#          rust-analyzer = {
+#	    enable = true;
+#	    installCargo = false;
+#	    installRustc = false;
+ #       };
+ #     };
+ #     lint = {
+ #       enable = false;
+ #       lintersByFt = {
+ #         text = ["vale"];
+ #         markdown = ["vale"];
+ #         dockerfile = ["hadolint"];
+ #         terraform = ["tflint"];
+ #         python = ["pflake8"];
+ #         };
+ #       };
+ #     };
+ #   }; 
+ # };
+
+
   # Enable home-manager and git
   programs.home-manager.enable = true;
 
+  
+
   programs.git = {
     enable = true;
-    lfs.enable = true;
-    userName = "Leigh Gable";
-    userEmail = "leighgable@gmail.com";
+    settings = {
+      user.name = "Leigh Gable";
+      user.email = "leighgable@gmail.com";
+      aliases = {
+        ci = "commit";
+        s = "status";
+        co = "checkout";
+      };
+    };
     signing = { 
       key = "713802B5DD843245";
     };
-    aliases = {
-      ci = "commit";
-      s = "status";
-      co = "checkout";
-    };
+    lfs.enable = true;
   };
   
   programs.gh = {
@@ -133,7 +115,15 @@
 
   programs.bash = {
     enable = true;
+    enableCompletion = true;
+    historyControl = [ "ignoreboth" ];
+    historyIgnore = [
+     "ls"
+     "cd"
+    ];
     shellAliases = {
+      vi = "nvim";
+      vim = "nvim";
       l = "eza -alh";
       ll = "eza -l";
       ls = "eza";
