@@ -67,9 +67,19 @@
  programs.emacs = {
    enable = true;
     package = pkgs.emacs-unstable-nox; 
-      config = builtins.readFile ../.config/emacs/emacs.el;
-     
-  };
+    config = builtins.readFile ./emacs.el;
+#init = {
+#     enable = true;
+#     packageQuickstart = false;
+#     recommendedGcSettings = false;
+#     usePackageVerbose = false;
+
+#      prelude = builtins.readFile "${inputs.minimal-emacs-d}/init.el";
+#     earlyInit =
+#       (builtins.readFile "${inputs.minimal-emacs-d}/early-init.el");
+      
+#   }; # emacs init
+  }; # emacs
   
   programs.gh = {
     enable = true;

@@ -20,6 +20,11 @@
       repo = "treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
       };
+    minimal-emacs-d = {
+      url = "github:jamescherti/minimal-emacs.d";
+      flake = false;
+    };
+
   };
  
   outputs = { self, nixpkgs, home-manager, nvf, treefmt-nix, emacs-overlay, ... }: {
