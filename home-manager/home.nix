@@ -5,7 +5,6 @@
   ...
 }: {
   imports = [
-    # inputs.nixvim.homeModules.nixvim
    ];
 
   home = {
@@ -45,48 +44,8 @@
     iamb
   ];
 
-  #programs.nixvim = {
-  #  enable = true;
-  #  opts = {
-  #    number = true;
-  #    relativenumber = true;
-  #    shiftwidth = 2;
-  #    autoindent = true;
-  #    expandtab = true;
-  #  };
-  #  plugins.lightline.enable = true;
-  #  plugins = { 
-  #    lsp = {
-  #      enable = true;
-  #      lspServersToEnable = "all";
-  #      servers = {
-  #        lua_ls.enable = true;
-#	  clangd.enable = true;
-#          rust-analyzer = {
-#	    enable = true;
-#	    installCargo = false;
-#	    installRustc = false;
- #       };
- #     };
- #     lint = {
- #       enable = false;
- #       lintersByFt = {
- #         text = ["vale"];
- #         markdown = ["vale"];
- #         dockerfile = ["hadolint"];
- #         terraform = ["tflint"];
- #         python = ["pflake8"];
- #         };
- #       };
- #     };
- #   }; 
- # };
-
-
   # Enable home-manager and git
   programs.home-manager.enable = true;
-
-  
 
   programs.git = {
     enable = true;
@@ -103,6 +62,13 @@
       key = "713802B5DD843245";
     };
     lfs.enable = true;
+  };
+  
+ programs.emacs = {
+   enable = true;
+    package = pkgs.emacs-unstable-nox; 
+      config = builtins.readFile ../.config/emacs/emacs.el;
+     
   };
   
   programs.gh = {
@@ -193,6 +159,8 @@
     enableSshSupport = true;
     # pinentryPackage = "gnome3";
   };
+
+
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

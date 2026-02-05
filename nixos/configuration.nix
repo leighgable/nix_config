@@ -22,6 +22,7 @@
   };
   nixpkgs = {
     overlays = [
+      inputs.emacs-overlay.overlay
     ];
     config = {
       allowUnfree = true;
@@ -73,6 +74,13 @@
         enable = true;
         };
       vim.languages = {
+        nix = {
+          enable = true;
+          format.enable = true;
+          format.type = [ "nixfmt" ];
+          lsp.enable = true;
+          treesitter.enable = true;
+      };
         rust.enable = true;
         rust.lsp.enable = true;
         clang.enable = true;
@@ -110,6 +118,7 @@
     # If you want to use JACK applications, uncomment this
     #jack.enable = true;
   };
+
  #  environment.etc = {
 	#   "wireplumber/bluetooth.lua.d/51-bluez-config.lua".text = ''
 	# 	  bluez_monitor.properties = {

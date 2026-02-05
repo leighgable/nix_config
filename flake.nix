@@ -7,6 +7,9 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    emacs-overlay = {
+      url = "github:nix-community/emacs-overlay";  
+    };
     nvf = {
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -19,7 +22,7 @@
       };
   };
  
-  outputs = { self, nixpkgs, home-manager, nvf, treefmt-nix, ... }: {
+  outputs = { self, nixpkgs, home-manager, nvf, treefmt-nix, emacs-overlay, ... }: {
       nixosModules = ./modules/nixos;
       
 #      homeManagerModules = ./modules/home-manager;
