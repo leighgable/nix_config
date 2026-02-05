@@ -46,8 +46,6 @@
   # TODO: Set your hostname
   networking.hostName = "think";
 
-
-
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
@@ -60,6 +58,13 @@
     xkb.layout = "us";
     xkb.variant = "";
   };
+
+  environment.systemPackages = [
+    (pkgs.emacsWithPackagesFromUsePackage {
+      package = pkgs.emacs-unstable-nox;
+      config = builtins.readFile ./emacs.el;
+    })
+  ];
 
   programs.nvf = {
     enable = true;

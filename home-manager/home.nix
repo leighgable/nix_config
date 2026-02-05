@@ -64,10 +64,13 @@
     lfs.enable = true;
   };
   
- programs.emacs = {
-   enable = true;
-    package = pkgs.emacs-unstable-nox; 
-    config = builtins.readFile ./emacs.el;
+# programs.emacs = {
+#   enable = true;
+#    package = ( pkgs.emacsWithPackagesFromUsePackage {
+#      emacs = pkgs.emacs-unstable-nox; 
+#      config = ./emacs.el;
+#    });
+#  };
 #init = {
 #     enable = true;
 #     packageQuickstart = false;
@@ -79,7 +82,7 @@
 #       (builtins.readFile "${inputs.minimal-emacs-d}/early-init.el");
       
 #   }; # emacs init
-  }; # emacs
+#  }; # emacs
   
   programs.gh = {
     enable = true;
