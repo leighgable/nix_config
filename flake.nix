@@ -35,6 +35,9 @@
       nixosConfigurations.think = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit (self) inputs; };
            modules = [
+             ({config, pkgs, ...}: {
+               nixpkgs.overlays = [ 
+                 emacs-overlay.overlay ];})
              ./nixos/configuration.nix
              nvf.nixosModules.default
            ];

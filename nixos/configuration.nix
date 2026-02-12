@@ -22,7 +22,7 @@
   };
   nixpkgs = {
     overlays = [
-      inputs.emacs-overlay.overlay
+#  inputs.emacs-overlay.overlay
     ];
     config = {
       allowUnfree = true;
@@ -59,12 +59,12 @@
     xkb.variant = "";
   };
 
-  environment.systemPackages = [
-    (pkgs.emacsWithPackagesFromUsePackage {
-      package = pkgs.emacs-unstable-nox;
-      config = builtins.readFile ./emacs.el;
-    })
-  ];
+# environment.systemPackages = [
+#    (pkgs.emacsWithPackagesFromUsePackage {
+#      package = pkgs.emacs-unstable-nox;
+#      config = ./emacs.el;
+#    })
+#  ];
 
   programs.nvf = {
     enable = true;
