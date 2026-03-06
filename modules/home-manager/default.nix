@@ -2,5 +2,11 @@
 # These should be stuff you would like to share with others, not your personal configurations.
 {
   # List your module files here
-  # starship = import ./starship.nix;
+  imports = [
+        ./starship.nix
+        ./tmux.nix
+        ./helix.nix
+        ./emacs.nix
+        ./fonts.nix
+  ];
 }

@@ -10,7 +10,6 @@
   # You can import other NixOS modules here
   imports = [
     inputs.home-manager.nixosModules.home-manager
-    # inputs.nvf.nixosModules.default
     ./hardware-configuration.nix
   ];
   home-manager = {
@@ -22,7 +21,6 @@
   };
   nixpkgs = {
     overlays = [
-#  inputs.emacs-overlay.overlay
     ];
     config = {
       allowUnfree = true;
@@ -66,46 +64,68 @@
 #    })
 #  ];
 
-  programs.nvf = {
-    enable = true;
-    settings = {
-      vim.viAlias = true; 
-      vim.vimAlias = true;
-      vim.options = {
-        tabstop = 2;
-
+programs.nvf = {
+  enable = true;
+  settings.vim = {
+    theme.enable = true;
+    theme.name = "gruvbox";
+    theme.style = "dark";
+    statusline.lualine.enable = true;
+    telescope.enable = true;
+    viAlias = true;
+    vimAlias = true;
+    lsp.enable = true;
+    autocomplete.nvim-cmp.enable = true;
+    options.tabstop = 2;
+    treesitter = { 
+      enable = true;
+      autotagHtml = true; 
+      addDefaultGrammars = true;
+      context.enable = true;
       };
-      vim.lsp = {
-        enable = true;
+      extraPlugins = { 
+        parinfer = {
+          package = pkgs.vimPlugins.parinfer-rust;
         };
-      vim.languages = {
-        nix = {
-          enable = true;
-          format.enable = true;
-          format.type = [ "nixfmt" ];
-          lsp.enable = true;
-          treesitter.enable = true;
+        ts-rainbow = { 
+          package = pkgs.vimPlugins.rainbow-delimiters-nvim;
+          setup = "require('rainbow-delimiters.setup').setup()";
+        };
+        futhark = {
+          package = pkgs.vimPlugins.futhark-vim;
+        };
       };
-        rust.enable = true;
-        rust.lsp.enable = true;
-        clang.enable = true;
-        clang.lsp.enable = true;
-        clang.lsp.servers = [ "clangd" ];
-        clang.treesitter.enable = true;
-        python = {
+    languages = {
+      nix.enable = true;
+      rust.enable = true;
+      bash.enable = true;
+      python = { 
+        enable = true;
+        lsp = {
           enable = true;
-          lsp.enable = true;
-          lsp.servers = [ "python-lsp-server" ];
-          format.enable = true;
-          format.type = [ "ruff" ];
-          treesitter.enable = true;
-          };
+          servers = [ "python-lsp-server" ];
+        };
+        format = { 
+          enable = true;
+          type = [ "ruff" ];
+        };
       };
+      clang = {
+        enable = true;
+        lsp.enable = true;
+        lsp.servers = [ "clangd" ];
+      };
+      ts.enable = true;  
+      enableTreesitter = true;
+      enableLSP = true;
     };
   };
-
+};
   # Enable CUPS to print documents.
   services.printing.enable = true;
+  services.printing.drivers = [ pkgs.cups-filters pkgs.cups-browsed ];
+  services.ipp-usb.enable = true;
+  
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
@@ -122,6 +142,11 @@
     wireplumber.enable = true;
     # If you want to use JACK applications, uncomment this
     #jack.enable = true;
+  };
+
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [ intel-ocl ];
   };
 
  #  environment.etc = {

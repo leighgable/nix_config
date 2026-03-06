@@ -4,23 +4,29 @@
     enable = true;
     enableBashIntegration = true;
     settings = {
+      gcloud.disabled = true;
       add_newline = false;
-      git_branch.symbol = "🌱 ";
-      git_status.disabled = true;
-      git_status = {
-        ahead = ''⇡''${count}'';
-        behind = ''⇣''${count}'';
-        diverged = ''⇕⇡''${ahead_count}⇣''${behind_count}'';
-        staged = "+$count";
+      username = {
+        style_user = "blue bold";
+        style_root = "red bold";
+        format = "[$user]($style) ";
+        disabled = false;
+        show_always = true;
       };
-      kubernetes.disabled = true;
+      hostname = {
+        ssh_only = false;
+        ssh_symbol = "🌐 ";
+        format = "on [$hostname](bold red) ";
+        trim_at = ".local";
+        disabled = false;
+      };
       nix_shell = {
         format = "via [$symbol$state]($style) ";
         impure_msg = "ι";
         pure_msg = "﻿ρ";
         symbol = "❄️";
       };
-      time.disabled = false;
     };
   };
 }
+

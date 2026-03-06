@@ -29,9 +29,6 @@
  
   outputs = { self, nixpkgs, home-manager, nvf, treefmt-nix, emacs-overlay, ... }: {
       nixosModules = ./modules/nixos;
-      
-#      homeManagerModules = ./modules/home-manager;
-
       nixosConfigurations.think = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit (self) inputs; };
            modules = [
