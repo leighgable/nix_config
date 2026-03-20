@@ -61,27 +61,11 @@
       };
     };
     languages = { 
-      language-server = {
-        clangd = {
-          args = [
-            "--enable-config"
-            "--clang-tidy"
-            ];
-          };
-        };
       language = [{
-                    name = "scheme";
-                    scope = "source.scheme";
-                    injection-regex = "scheme";
-                    file-types = ["ss" "scm" "sld"];
-                    shebangs = ["scheme" "chibi-scheme" ];
-                    comment-token = ";";
-                    indent = { tab-width = 2 };
-                }];
-      grammar = [{
-                  name = "scheme"
-                  source = { git = "https://github.com/6cdh/tree-sitter-scheme" rev = "b5c701148501fa056302827442b5b4956f1edc03" }
-                }]; 
+    name = "nix";
+    auto-format = true;
+    formatter.command = lib.getExe pkgs.nixfmt;
+  }];
     };
   };
 }

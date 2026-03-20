@@ -117,7 +117,6 @@ programs.nvf = {
       };
       ts.enable = true;  
       enableTreesitter = true;
-      enableLSP = true;
     };
   };
 };

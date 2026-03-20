@@ -3,10 +3,11 @@
 {
   # List your module files here
   imports = [
-        ./starship.nix
-        ./tmux.nix
-        ./helix.nix
-        ./emacs.nix
-        ./fonts.nix
+    # ./starship.nix
+    ./tmux.nix
+    ./zellij.nix
+    ./helix.nix
+    ./emacs.nix
+    ./fonts.nix
   ];
 }

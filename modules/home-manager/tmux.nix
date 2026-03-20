@@ -17,7 +17,8 @@
     historyLimit = 50000;
 
     plugins = with pkgs; [
-        tmuxPlugins.tokyo-night-tmux
+      tmuxPlugins.cpu
+      tmuxPlugins.ukiyo
     ];
 
     extraConfig = ''
@@ -31,6 +32,9 @@
       bind | split-window -h -c "#{pane_current_path}"
       bind - split-window -v -c "#{pane_current_path}"
       bind c new-window -c "#{pane_current_path}"
+      set -g @ukiyo-theme "solarized/dark"
+      set -g status-right '#[fg=black,bg=color15] #{cpu_percentage}  %H:%M '
+      run-shell ${pkgs.tmuxPlugins.cpu}/share/tmux-plugins/cpu/cpu.tmux
     '';
   };
 }
